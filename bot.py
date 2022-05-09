@@ -9,6 +9,7 @@ bot.key = os.getenv("API_KEY")
 bot.gname = os.getenv("GUILD_NAME")
 bot.log_channel = int(os.getenv("LOG_CHANNEL"))
 bot.role = int(os.getenv("GUILD_ROLE"))
+
 @tasks.loop(hours=12)
 async def loop():
     role = bot.guilds[0].get_role(bot.role)
