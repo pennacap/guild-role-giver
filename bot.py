@@ -9,12 +9,11 @@ bot.key = os.getenv("API_KEY")
 bot.gname = os.getenv("GUILD_NAME")
 bot.log_channel = int(os.getenv("LOG_CHANNEL"))
 bot.role = int(os.getenv("GUILD_ROLE"))
-
 @tasks.loop(hours=12)
 async def loop():
     role = bot.guilds[0].get_role(bot.role)
     
-    a = requests.get("https://api.hypixel.net/guild?name={bot.gname}&key=0dcc1cec-f88c-44f2-877b-b173cb78bac0").json()
+    a = requests.get("https://api.hypixel.net/guild?name={bot.gname.replace(' ','%20'}&key=0dcc1cec-f88c-44f2-877b-b173cb78bac0").json()
     file = []
     for i in a['guild']['members']:
         b = i['uuid']
