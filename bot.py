@@ -37,7 +37,8 @@ async def loop():
                 file+=[b+": Can't fetch display name? That's odd"]
                 
             continue
-        await discord.utils.get(bot.guilds[0].members,name=social_media.split('#')[0],discriminator=social_media.split('#')[1]).add_roles(role)
+        if bot.role not in list(map(lambda x: x.id, discord.utils.get(bot.guilds[0].members,name=social_media.split('#')[0],discriminator=social_media.split('#')[1]).roles)):
+            await discord.utils.get(bot.guilds[0].members,name=social_media.split('#')[0],discriminator=social_media.split('#')[1]).add_roles(role)
         bot.dc[c["displayname"]]=social_media
     file+=["\n\n=== DATA FOUND ==="]
     for i in bot.dc.keys():
