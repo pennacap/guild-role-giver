@@ -71,6 +71,8 @@ async def loop1():
     await bot.get_channel(bot.log_channel).send(file=file)
 @bot.event
 async def on_ready():
+    global category
+    category = client.get_channel(983652054419525632)
     try:
         loop1.start()
     except Exception:
